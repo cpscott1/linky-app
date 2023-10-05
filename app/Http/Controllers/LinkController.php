@@ -49,6 +49,13 @@ class LinkController extends Controller
         return view('show',["short_url" => $short_url]);
     }
 
+    public function redirect($short_url)
+    {
+        $link = Link::where('short_url', $short_url)->firstOrFail();
+        // return $link->original_url;
+        return redirect($link->original_url);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
